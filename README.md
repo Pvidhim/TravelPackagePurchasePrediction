@@ -1,7 +1,3 @@
-# TravelPackagePurchasePrediction
-Certainly! Below is a sample **README** file for your GitHub repository, which is for the **Travel Package Purchase Prediction** project. Feel free to edit or expand it based on the specifics of your project.
-
----
 
 # Travel Package Purchase Prediction
 
