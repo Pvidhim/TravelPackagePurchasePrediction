@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Package Purchase Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 800px;
+            text-align: center;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-container form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .form-group {
+            width: 48%;
+            margin-bottom: 15px;
+        }
+        .form-container label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-container input, .form-container select {
+            width: calc(100% - 20px);
+            padding: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            padding: 10px;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f1f8ff;
+            border: 1px solid #cce5ff;
+            border-radius: 5px;
+            color: #004085;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Travel Package Purchase Prediction</h2>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="CustomerID">CustomerID:</label>
+                <input type="number" name="CustomerID" required>
+            </div>
+            <div class="form-group">
+                <label for="Age">Age:</label>
+                <input type="number" name="Age" required>
+            </div>
+            <div class="form-group">
+                <label for="CityTier">City Tier:</label>
+                <input type="number" name="CityTier" required>
+            </div>
+            <div class="form-group">
+                <label for="DurationOfPitch">Duration of Pitch (in minutes):</label>
+                <input type="number" name="DurationOfPitch" required>
+            </div>
+            <div class="form-group">
+                <label for="Gender">Gender:</label>
+                <select name="Gender" required>
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="NumberOfPersonVisiting">Number of Persons Visiting:</label>
+                <input type="number" name="NumberOfPersonVisiting" required>
+            </div>
+            <div class="form-group">
+                <label for="NumberOfFollowups">Number of Follow-ups:</label>
+                <input type="number" name="NumberOfFollowups" required>
+            </div>
+            <div class="form-group">
+                <label for="PreferredPropertyStar">Preferred Property Star:</label>
+                <input type="number" name="PreferredPropertyStar" min="1" max="5" required>
+            </div>
+            <div class="form-group">
+                <label for="NumberOfTrips">Number of Trips:</label>
+                <input type="number" name="NumberOfTrips" required>
+            </div>
+            <div class="form-group">
+                <label for="Passport">Passport:</label>
+                <select name="Passport" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="PitchSatisfactionScore">Pitch Satisfaction Score (1-5):</label>
+                <input type="number" name="PitchSatisfactionScore" min="1" max="5" required>
+            </div>
+            <div class="form-group">
+                <label for="OwnCar">Own Car:</label>
+                <select name="OwnCar" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="NumberOfChildrenVisiting">Number of Children Visiting:</label>
+                <input type="number" name="NumberOfChildrenVisiting" required>
+            </div>
+            <div class="form-group">
+                <label for="MonthlyIncome">Monthly Income (in currency):</label>
+                <input type="number" step="0.01" name="MonthlyIncome" required>
+            </div>
+            <div class="form-group">
+                <label for="TypeofContact_Self Enquiry">Was it a self Inquiry? :</label>
+                <select name="TypeofContact_Self Enquiry" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Occupation">Occupation:</label>
+                <select name="Occupation" required>
+                    <option value="Large Business">Large Business</option>
+                    <option value="Salaried">Salaried</option>
+                    <option value="Small Business">Small Business</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ProductPitched">Product Pitched:</label>
+                <select name="ProductPitched" required>
+                    <option value="Deluxe">Deluxe</option>
+                    <option value="King">King</option>
+                    <option value="Standard">Standard</option>
+                    <option value="Super Deluxe">Super Deluxe</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="MaritalStatus">Marital Status:</label>
+                <select name="MaritalStatus" required>
+                    <option value="Married">Married</option>
+                    <option value="Unmarried">Unmarried</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Designation">Designation:</label>
+                <select name="Designation" required>
+                    <option value="Executive">Executive</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Senior Manager">Senior Manager</option>
+                    <option value="VP">VP</option>
+                </select>
+            </div>
+            <div class="form-group" style="width: 100%;">
+                <input type="submit" value="Predict">
+            </div>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
