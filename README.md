@@ -83,7 +83,7 @@ scikit-learn
 xgboost
 LightGBM
 flask
-
+ ```
 ### Web Interface
 The user can input details such as:
 - Age
