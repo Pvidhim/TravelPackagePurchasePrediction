@@ -67,6 +67,22 @@ This will start a local server. Open your browser and visit the following URL to
 ```
 http://127.0.0.1:5000/
 ```
+### 📷 DEMO PHOTO
+![image](https://github.com/user-attachments/assets/036298b9-a51e-4a5d-bfa7-53c8a9d91aed)
+## ⏳Data Source
+[Travel Package Data](https://www.kaggle.com/code/yogidsba/travelpackageprediction-ensemble-techniques/input)
+***
+ ## 🖥️Library Used
+ There will be file named requirement.txt which will contain all these libraries used in project.
+ ```
+pandas
+numpy
+seaborn
+matplotlib
+scikit-learn
+xgboost
+LightGBM
+flask
 
 ### Web Interface
 The user can input details such as:
@@ -106,6 +122,11 @@ Data preprocessing steps include:
 - **xgboost**: For building the prediction model using gradient boosting.
 - **lightgbm**: For an alternative gradient boosting model.
 - **scikit-learn**: For machine learning utilities like splitting the data and evaluating models.
+
+## Deployment
+
+-The project was deployed on render . The link to the same is : https://travelpackagepurchaseprediction.onrender.com
+You can access the model directly through this link and try inputting various data .
 
 ## License
 
